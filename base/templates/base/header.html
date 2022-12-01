@@ -1,0 +1,14 @@
+<div class="header">
+  {% if request.user.is_authenticated %}
+    <div class="header_element">
+      <p>{{request.user}}</p>
+    </div>
+    <div class="header_element">
+      <a class='log-element' href="{% url 'logout' %}">Logout</a>
+    </div>
+  {% else %}
+    <div class="header_element">
+      <a class="log-element" href="{% url 'login' %}">Login</a>
+    </div>
+  {% endif %}
+</div>

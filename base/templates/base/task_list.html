@@ -1,0 +1,53 @@
+{% extends 'base/main.html' %}
+{% block content %}
+
+<div class="items">
+    {% for task in tasks %}
+      {% if task.complete == False %}
+        <div class="item_container">
+          <div class="item_title_block">
+            <a href="{% url 'task-complete' task.id %}" class="incomplete"><i class="fa-regular fa-circle-check"></i></a>
+            <a href="{% url 'task-complete' task.id %}" class="item_title"><h3>{{task.title}}</h3></a>
+          </div>
+          <div class="item_functions">
+            <div class="item_view">
+              <a href="{% url 'task' task.id %}"><i class="fa-solid fa-eye"></i></a>
+            </div>
+            <div class="item_view">
+              <a href="{% url 'task-update' task.id %}"><i class="fa-solid fa-pen-to-square"></i></a>
+            </div>
+            <div class="item_view">
+              <a href="{% url 'task-delete' task.id %}"><i class="fa-solid fa-trash"></i></a>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% empty %}
+    <h3 id="no-tasks">No Tasks</h3>
+    {% endfor %}
+    <hr>
+    {% for task in tasks %}
+      {% if task.complete == True %}
+        <div class="item_container">
+          <div class="item_title_block">
+            <a href="{% url 'task-complete' task.id %}" class="complete"><i class="fa-regular fa-circle-check"></i></a>
+            <a href="{% url 'task-complete' task.id %}" class="item_title"><h3>{{task.title}}</h3></a>
+          </div>
+          <div class="item_functions">
+            <div class="item_view">
+              <a href="{% url 'task' task.id %}"><i class="fa-solid fa-eye"></i></a>
+            </div>
+            <div class="item_view">
+              <a href="{% url 'task-update' task.id %}"><i class="fa-solid fa-pen-to-square"></i></a>
+            </div>
+            <div class="item_view">
+              <a href="{% url 'task-delete' task.id %}"><i class="fa-solid fa-trash"></i></a>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+
+</div>
+
+{% endblock content %}

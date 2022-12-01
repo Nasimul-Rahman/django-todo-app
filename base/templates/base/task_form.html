@@ -1,0 +1,15 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+<div class="goback_btn_container">
+  <a href="{% url 'tasks' %}"><i class="fa-solid fa-arrow-left-long"></i></a>
+</div>
+<div id="form_container">
+  <form id="form" method="POST" action="">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input id='submit-btn' type="submit" value="Submit">
+  </form>
+</div>
+
+{% endblock content %}

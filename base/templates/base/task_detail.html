@@ -1,0 +1,15 @@
+{% extends 'base/main.html' %}
+{% block content %}
+<div class="goback_btn_container">
+  <a href="{% url 'tasks' %}"><i class="fa-solid fa-arrow-left-long"></i></a>
+</div>
+<div class="detail-container">
+  <h1>{{task.title}}</h1>
+  {% if task.description == '' %}
+    <p>No description given!</p>
+  {% else %}
+    <p>{{task.description}}</p>
+  {% endif %}
+</div>
+
+{% endblock content %}
